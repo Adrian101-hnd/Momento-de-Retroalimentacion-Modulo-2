@@ -48,7 +48,7 @@ df = pd.read_csv("winequality-red.csv")
 #Para demostrar que el modelo genraliza se hace un loop para probar con diferentes valores para el random_state
 #del split del dataset. Esto con el objetivo de ver modelo hacer predicciones con diferentes datos de entrenamiento
 #y de validación
-for i in range(50,55):
+for i in range(50,75):
     print(i)
 
     #Dividimos el dataset en uno de entrenamiento y otro de validación. Usamos el numero "i" como
@@ -64,8 +64,8 @@ for i in range(50,55):
 
 
 
-    #Hacer objeto de modelo KNN y hacerle fit con los datos de entrenamiento, suponemos una K = 3
-    k = 3
+    #Hacer objeto de modelo KNN y hacerle fit con los datos de entrenamiento, suponemos una K = 1
+    k = 1
     model = KNN(k)
     model.fit(train_x,train_y)
 

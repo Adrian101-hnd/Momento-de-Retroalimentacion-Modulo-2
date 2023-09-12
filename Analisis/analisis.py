@@ -51,6 +51,9 @@ def varianza():
     X = df.drop('quality', axis=1)
     y = df['quality']
 
+    X = df.drop('quality', axis=1)
+    y = df['quality']
+
     x_values = np.arange(1, 51)
 
     for i in range(50,53):
@@ -72,28 +75,34 @@ def varianza():
         print(accuracy_score(y_test,predict_test))
 
 
+def bias():
 
-# tree = DecisionTreeClassifier(max_depth = 8)
+    df = pd.read_csv("winequality_red_revised.csv")
 
-# tree.fit(X_train,y_train)
+    X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.4, random_state=42)
+    X_test, X_val, y_test, y_val = train_test_split(X_temp, y_temp, test_size=0.5, random_state=42)
 
-# predictions_test = tree.predict(X_test)
-# accuracy_test = accuracy_score(y_test, predictions_test)
+    tree = DecisionTreeClassifier(max_depth = 8)
 
-# predictions_val = tree.predict(X_val)
-# accuracy_val = accuracy_score(y_val,predictions_val)
+    tree.fit(X_train,y_train)
 
-# predictions_train = tree.predict(X_train)
-# accuracy_train = accuracy_score(y_train,predictions_train)
+    predictions_test = tree.predict(X_test)
+    accuracy_test = accuracy_score(y_test, predictions_test)
 
-# labels = ['Entrenamiento', 'Prueba', 'Validación']
-# accuracies = [accuracy_train, accuracy_test, accuracy_val]
+    predictions_val = tree.predict(X_val)
+    accuracy_val = accuracy_score(y_val,predictions_val)
 
-# plt.bar(labels, accuracies)
-# plt.ylim(0, 1)  # Ajusta el rango del eje y
-# plt.ylabel('Precisión')
-# plt.title('Comparación de Precisión en Diferentes Conjuntos')
-# plt.show()
+    predictions_train = tree.predict(X_train)
+    accuracy_train = accuracy_score(y_train,predictions_train)
+
+    labels = ['Entrenamiento', 'Prueba', 'Validación']
+    accuracies = [accuracy_train, accuracy_test, accuracy_val]
+
+    plt.bar(labels, accuracies)
+    plt.ylim(0, 1)  # Ajusta el rango del eje y
+    plt.ylabel('Precisión')
+    plt.title('Comparación de Precisión en Diferentes Conjuntos')
+    plt.show()
 
 
 
